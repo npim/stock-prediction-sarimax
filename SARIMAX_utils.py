@@ -28,6 +28,17 @@ def compute_exog_dec_jan_effect(df):
     else:
         return 0
 
+def compute_exog_pandemic(df):
+    """
+    COVID19 pandemic hit the market worsely on December 2019 - July 2020
+    """
+    if df['month'] == 12 and df['year'] == 2019:
+        return 1
+    elif df['month'] in [1,2,3,4,5,6,7] and df['year'] == 2020:
+        return 1
+    else:
+        return 0
+
 # SARIMAX Grid Search
 def sarimax(train_y,train_exog,all_param):
     results = []
